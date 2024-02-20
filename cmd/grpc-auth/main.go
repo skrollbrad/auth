@@ -2,14 +2,12 @@ package main
 
 import (
 	"context"
-	"log"
-	"time"
-
 	"github.com/fatih/color"
+	desc "github.com/skrollbrad/auth/pkg/auth_v1"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"
-
-	desc "github.com/skrollbrad/auth/pkg/auth_v1"
+	"log"
+	"time"
 )
 
 const (
@@ -31,8 +29,8 @@ func main() {
 
 	r, err := c.Get(ctx, &desc.GetRequest{Id: noteID})
 	if err != nil {
-		log.Fatalf("failed to get note by id: %v", err)
+		log.Fatalf("failed to get id: %v", err)
 	}
 
-	log.Printf(color.RedString("Note info:\n"), color.GreenString("%+v", r.GetId()))
+	log.Printf(color.RedString("Info:\n"), color.GreenString("%+v", r.GetId()))
 }
